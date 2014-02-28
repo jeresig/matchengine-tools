@@ -5,7 +5,11 @@ var ArgumentParser = require("argparse").ArgumentParser;
 
 var argparser = new ArgumentParser({
     description: "Downloads image similarity data from MatchEngine. " +
-        "Outputs JSON results to the specified file."
+        "Outputs JSON results to the specified file. Results will be " +
+        "written out as one large object, the keys of which will be " +
+        "the IDs of the files on the MatchEngine service. The value will " +
+        "be an array of objects holding the match data. Files with no " +
+        "matches will not be written out."
 });
 
 argparser.addArgument(["outFile"], {
@@ -25,7 +29,9 @@ argparser.addArgument(["--threads"], {
 });
 
 argparser.addArgument(["--filter"], {
-    help: "Filter for which MatchEngine files to download the results of."
+    help: "Filter for which MatchEngine files to download the results of. " +
+        "For example: 'sample' will only download matches that are prefixed " +
+        "with 'sample'."
 });
 
 var args = argparser.parseArgs();
@@ -39,11 +45,9 @@ var fileStream;
 
 console.log("Loading Match Engine data...");
 
-ME.list(function(data) {
+ME.list(function(err, results) {
     fileStream = JSONStream.stringifyObject();
     fileStream.pipe(fs.createWriteStream(args.outFile));
-
-    var results = data.result;
 
     if (args.filter) {
         results = results.filter(function(image) {
@@ -64,9 +68,9 @@ function queryImage(image, callback) {
     console.log("[" + numDownloaded + "/" + totalImages +
         "] Querying " + image + "...");
 
-    ME.similar(image, function(data) {
+    ME.similar(image, function(err, results) {
         // Filter out results that are just matching the same image
-        var results = data.result.filter(function(item) {
+        results = results.filter(function(item) {
             return item.filepath !== image;
         });
 

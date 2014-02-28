@@ -42,7 +42,7 @@ var ME = require("matchengine")(conf);
 
 console.log("Downloading file data from MatchEngine...");
 
-ME.list(function(meData) {
+ME.list(function(err, results) {
     fs.readdir(args.path, function(err, allFiles) {
         var groups = [];
         var count = 1;
@@ -50,7 +50,7 @@ ME.list(function(meData) {
 
         console.log("Filtering out already-uploaded files...");
 
-        meData.result.forEach(function(file) {
+        results.forEach(function(file) {
             doneFiles[file] = true;
         });
 
