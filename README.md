@@ -52,3 +52,10 @@ Optional arguments:
   --pause PAUSE  How long to pause, in milliseconds, inbetween uploads
                  (default: 0).
 ```
+
+Credits
+===
+
+Created by [John Resig](http://ejohn.org/).
+
+Released under an MIT license.
