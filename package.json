@@ -1,8 +1,8 @@
 {
   "name": "matchengine-tools",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "description": "Tools for interacting with TinEye's MatchEngine.",
-  "main": "bulk-upload.js",
+  "main": "get-similar.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,8 +13,8 @@
   "keywords": [
     "matchengine",
     "tineye",
-    "computer",
-    "vision"
+    "computer vision",
+    "cv"
   ],
   "author": "John Resig <jeresig@gmail.com>",
   "license": "MIT",
@@ -25,6 +25,6 @@
     "async": "~0.2.10",
     "argparse": "~0.1.15",
     "JSONStream": "~0.8.0",
-    "matchengine": "0.0.1"
+    "matchengine": "0.0.4"
   }
 }
