@@ -79,17 +79,35 @@ function queryImage(image, callback) {
     console.log("[" + numDownloaded + "/" + totalImages +
         "] Querying " + image + "...");
 
-    ME.similar(image, function(err, results) {
-        // Filter out results that are just matching the same image
-        results = results.filter(function(item) {
-            return item.filepath !== image;
+    var attempts = 0;
+    var maxAttempts = 3;
+
+    var attempt = function() {
+        ME.similar(image, function(err, results) {
+            attempts += 1;
+
+            if (err || !results) {
+                if (attempts === maxAttempts) {
+                    return callback(err);
+                } else {
+                    console.log("Re-attempting:", image);
+                    return attempt();
+                }
+            }
+
+            // Filter out results that are just matching the same image
+            results = results.filter(function(item) {
+                return item.filepath !== image;
+            });
+
+            // Only log results where there is at least one match
+            if (results.length > 0) {
+                fileStream.write([image, results]);
+            }
+
+            callback();
         });
+    };
 
-        // Only log results where there is at least one match
-        if (results.length > 0) {
-            fileStream.write([image, results]);
-        }
-
-        callback();
-    });
+    attempt();
 }
