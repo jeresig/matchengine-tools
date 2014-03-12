@@ -28,6 +28,10 @@ argparser.addArgument(["--filter"], {
     help: "Filter for which MatchEngine files to download the results of."
 });
 
+argparser.addArgument(["--reject"], {
+    help: "Reject certain matches from being downloaded."
+});
+
 var args = argparser.parseArgs();
 
 var conf = require(args.conf);
@@ -48,6 +52,13 @@ ME.list(function(data) {
     if (args.filter) {
         results = results.filter(function(image) {
             return image.indexOf(args.filter) === 0;
+        });
+    }
+
+    if (args.reject) {
+        var reject = new RegExp("^(?:" + args.reject + ")");
+        results = results.filter(function(image) {
+            return !reject.test(image);
         });
     }
 
