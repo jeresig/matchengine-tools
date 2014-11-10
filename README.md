@@ -115,6 +115,7 @@ Optional arguments:
   --filter FILTER    Filter for which MatchEngine files to download the
                      results of. For example: 'camping' will only download
                      matches that are prefixed with 'camping'.
+  --reject REJECT    Reject certain matches from being downloaded.
 ```
 
 Credits
