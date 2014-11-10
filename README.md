@@ -123,4 +123,4 @@ Credits
 
 Created by [John Resig](http://ejohn.org/). Released under an MIT license.
 
-Funding for this project was provided by a [Digital Resources](http://www.kressfoundation.org/grants/default.aspx?id=150) grant from the [Kress Foundation](http://www.kressfoundation.org/), in cooperation with the [Frick Art Reference Library](http://www.frick.org/research/library).
+Funding for this project was provided by a [Digital Resources](http://www.kressfoundation.org/grants/default.aspx?id=150) grant from the [Kress Foundation](http://www.kressfoundation.org/), in cooperation with the [Frick Photoarchive](http://www.frick.org/research/photoarchive).
