@@ -1,6 +1,6 @@
 {
   "name": "matchengine-tools",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Tools for interacting with TinEye's MatchEngine.",
   "main": "get-similar.js",
   "scripts": {

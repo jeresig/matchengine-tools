@@ -30,8 +30,8 @@ argparser.addArgument(["--threads"], {
 
 argparser.addArgument(["--filter"], {
     help: "Filter for which MatchEngine files to download the results of. " +
-        "For example: 'sample' will only download matches that are prefixed " +
-        "with 'sample'."
+        "For example: 'camping' will only download matches that are " +
+        "prefixed with 'camping'."
 });
 
 var args = argparser.parseArgs();

@@ -23,16 +23,17 @@ argparser.addArgument(["--conf"], {
 });
 
 argparser.addArgument(["--batch"], {
-    defaultValue: 1000,
+    defaultValue: 100,
     type: "int",
     help: "The number of images to upload in a single batch (up to 1000) " +
-        "(default: 1000)."
+        "(default: 100)."
 });
 
 argparser.addArgument(["--pause"], {
-    defaultValue: 0,
+    defaultValue: 5000,
     type: "int",
-    help: "How long to pause, in milliseconds, inbetween uploads (default: 0)."
+    help: "How long to pause, in milliseconds, inbetween uploads " + 
+        "(default: 5000)."
 });
 
 var args = argparser.parseArgs();
